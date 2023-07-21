@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 04 Feb 2019 pada 07.26
--- Versi Server: 10.1.26-MariaDB
--- PHP Version: 7.1.9
+-- Generation Time: Jul 21, 2023 at 04:40 AM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 7.1.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jawaban`
+-- Table structure for table `jawaban`
 --
 
 CREATE TABLE `jawaban` (
@@ -37,24 +37,23 @@ CREATE TABLE `jawaban` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `jawaban`
+-- Dumping data for table `jawaban`
 --
 
 INSERT INTO `jawaban` (`id`, `username`, `id_pertanyaan`, `jawaban`, `level`) VALUES
-(3, 'jaja', 2, 'Karena Bundar', 'anggota'),
-(6, 'neni', 2, 'Bundar', 'anggota'),
-(7, 'fauzi', 5, 'Read To pdf', 'ketua'),
-(10, 'neni', 6, 'Belajar ', 'anggota'),
-(13, 'fauzi', 2, 'karena bundar', 'ketua'),
-(14, 'neni', 2, 'Ya Bumi Bundar', 'anggota'),
-(16, 'neni', 6, 'Belajar', 'anggota'),
-(17, 'jaja', 5, 'Donwload Bootsrap', 'anggota'),
-(18, 'fauzi', 8, 'Pelajari CMV', 'ketua');
+(2, 'putriiajeng', 17, 'iya', 'anggota'),
+(3, 'putriiajeng', 18, '6 tahun', 'anggota'),
+(4, 'dzahwaptr', 17, 'YA', 'anggota'),
+(5, 'admin', 23, 'Ada', 'anggota'),
+(6, 'dzahwaptr', 18, '5-6 tahun terakhir', 'anggota'),
+(7, 'karina00', 22, 'ada', 'anggota'),
+(8, 'putriiajeng', 22, 'fitur chat', 'anggota'),
+(9, 'fauzi', 17, 'YOI', 'anggota');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pertanyaan`
+-- Table structure for table `pertanyaan`
 --
 
 CREATE TABLE `pertanyaan` (
@@ -65,20 +64,28 @@ CREATE TABLE `pertanyaan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `pertanyaan`
+-- Dumping data for table `pertanyaan`
 --
 
 INSERT INTO `pertanyaan` (`id_pertanyaan`, `username`, `pertanyaan`, `tgl`) VALUES
-(2, 'faris', 'Bagaimana Bumi Bundar', '2019-12-31'),
-(3, 'faris', 'Trash me', '2018-12-30'),
-(5, 'dedi', 'How To Make Apliaction Boostrap', '2019-01-31'),
-(6, 'faris', 'Cara Membuat Aplikasi Codelgniter', '2019-02-01'),
-(8, 'dedi', 'Cara Setting Codelgniter', '2019-02-04');
+(17, 'admin', 'Apakah anda menggunakan sosial media?', '2023-07-19'),
+(18, 'admin', 'Sudah berapa lama anda menggunakan sosial media?', '2023-07-19'),
+(19, 'admin', 'Aplikasi sosial media mana yang menurut anda memiliki fitur terbaik?', '2023-07-19'),
+(20, 'admin', 'Jelaskan alasannya, mengapa anda memilih aplikasi tersebut?', '2023-07-19'),
+(22, 'admin', 'Fitur mana yang anda sukai dari aplikasi tersebut? berikan alasannya', '2023-07-19'),
+(23, 'admin', 'Adakah manfaat yang anda dapatkan ketika menggunakan sosial media tersebut?', '2023-07-19'),
+(25, 'admin', 'Apa dampak negatif dari sosial media yang anda gunakan?', '2023-07-19'),
+(32, 'admin', 'Apakah anda menggunakan Sosial Media sebagai sarana pemasaran?', '2023-07-19'),
+(33, 'admin', 'Mengapa anda menggunakan Sosial Media sebagai sarana pemasaran?', '2023-07-19'),
+(34, 'admin', 'Sosial media mana yang membantu anda dalam hal pendidikan? berikan alasannya', '2023-07-19'),
+(35, 'admin', 'Aplikasi sosial media mana yang sangat membantu anda dalam kehidupan sehari-hari? ', '2023-07-19'),
+(36, 'admin', 'Apa ada tips untuk membantu Anda berhasil menggunakan Sosial Media?', '2023-07-19'),
+(38, 'admin', 'Apa kesalahan yang pernah anda lakukan ketika menggunakan sosial media?', '2023-07-19');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -88,20 +95,26 @@ CREATE TABLE `user` (
   `skpd` varchar(120) NOT NULL,
   `email` varchar(120) NOT NULL,
   `no_telpn` varchar(120) NOT NULL,
+  `umur` varchar(120) NOT NULL,
   `level` enum('pengguna','anggota','ketua') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`, `skpd`, `email`, `no_telpn`, `level`) VALUES
-(1, 'faris', '7d77e825b80cff62a72e680c1c81424f', 'Dkis', 'faris@pengguna.com', '081220546207', 'pengguna'),
-(2, 'dedi', 'c5897fbcc14ddcf30dca31b2735c3d7e', 'Dkis', 'dedi@dedi.com', '091220543789', 'pengguna'),
-(4, 'fauzi', '0bd9897bf12294ce35fdc0e21065c8a7', 'Dkis', 'fauzi@ketua.com', '0917283947', 'ketua'),
-(5, 'jaja', 'bb0ed6ad56f41c6de469776171261226', 'Dkis', 'jaja@anggota.com', '08272625372727', 'anggota'),
-(6, 'neni', '7a57a80314a2af4e4fc836700d291429', 'Dkis', 'neni@anggota.com', '0282626253637', 'anggota'),
-(10, 'Ahmad Fauzi', '61243c7b9a4022cb3f8dc3106767ed12', 'skinfa', 'skinfa@skinfa.com', '09122043637', 'anggota');
+INSERT INTO `user` (`id`, `username`, `password`, `skpd`, `email`, `no_telpn`, `umur`, `level`) VALUES
+(1, 'putriajeng', '8b9977905bc3c5f9827885313c822cf6', 'putriajeng', 'putriajeng@gmail.com', '4747', '', 'pengguna'),
+(2, 'claudiaanisa', '098187827073ac06507c8a0572e51f7e', 'claudiaanisa', 'claudiaanisa@gmail.com', '089999', '', 'pengguna'),
+(3, 'admin', '0192023a7bbd73250516f069df18b500', 'admin', 'admin@gmail.com', '898989', '', 'pengguna'),
+(4, 'fauzi', 'dfb9e85bc0da607ff76e0559c62537e8', 'anggota', 'anggota@anggota', '8989', '', 'anggota'),
+(5, 'ahmad', '8de13959395270bf9d6819f818ab1a00', 'ahmad', 'ahhmad@ahmad', '', '', 'anggota'),
+(6, 'putriiajeng', '7f5be8aa3215455ab11a5942b5b1a25f', 'Putri Ajeng Larasmanah', 'putri@gmail.com', '', '', 'anggota'),
+(7, 'labib', '343989c1c14969d93d73b462b70b2d51', 'labib', 'labib@gmail.com', '', '', 'anggota'),
+(8, 'dzahwaptr', '25d55ad283aa400af464c76d713c07ad', 'dzahwa laely putri ', 'dzahwaputri777@gmail.com', '', '', 'anggota'),
+(9, 'karina00', 'a37b2a637d2541a600d707648460397e', 'Karina Winter', 'spreadbreadwings@gmail.com', '', '', 'anggota'),
+(10, 'dadang321', '0037bb978d51e84d1ad5478e85430f26', 'laki', 'dadang@dadang', '', '', 'anggota'),
+(11, 'diki69', '43b93443937ea642a9a43e77fd5d8f77', 'laki', 'diki@diki', '0897', '20', 'anggota');
 
 --
 -- Indexes for dumped tables
@@ -134,26 +147,26 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `jawaban`
 --
 ALTER TABLE `jawaban`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `pertanyaan`
 --
 ALTER TABLE `pertanyaan`
-  MODIFY `id_pertanyaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_pertanyaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `jawaban`
+-- Constraints for table `jawaban`
 --
 ALTER TABLE `jawaban`
   ADD CONSTRAINT `jawaban_ibfk_1` FOREIGN KEY (`id_pertanyaan`) REFERENCES `pertanyaan` (`id_pertanyaan`);
