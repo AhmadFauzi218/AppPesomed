@@ -87,6 +87,49 @@
             </div>
         </div>
 
+        <!-- MODAL EDIT -->
+        <div class="modal fade" id="ModalaEdit" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 class="modal-title" id="myModalLabel">Ubah Pengajuan</h3>
+            </div>
+            <form class="form-horizontal">
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >id permohonan</label>
+                        <div class="col-xs-9">
+                            <input name="id_pertanyaan_edit" id="id_permohonan2" class="form-control" type="text" placeholder="id permohonan" style="width:335px;" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >jurusan</label>
+                        <div class="col-xs-9">
+                            <input name="pertanyaan_edit" id="jurusan2" class="form-control" type="text" placeholder="Jurusan" style="width:335px;" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >waktu</label>
+                        <div class="col-xs-9">
+                            <input name="tgl_edit" id="waktu_pelaksanaan2" class="form-control" type="text" placeholder="waktu" style="width:335px;" required>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Tutup</button>
+                    <button class="btn btn-info" id="btn_update">Update</button>
+                </div>
+            </form>
+            </div>
+            </div>
+        </div>
+        <!--END MODAL EDIT-->
         <!--MODAL HAPUS-->
         <div class="modal fade" id="ModalHapus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
@@ -139,6 +182,8 @@
                         '<td>'+data[i].pertanyaan+'</td>'+
                         '<td>'+data[i].tgl+'</td>'+
                         '<td style="text-align:right;">'+
+                                    '<a href="javascript:;" class="btn btn-primary fa fa-pencil item_edit" data="'+data[i].id_pertanyaan+'"></a>'+' '+
+
                                     '<a href="javascript:;" class="btn btn-danger btn-xs fa fa-times item_hapus" data="'+data[i].id_pertanyaan+'"></a>'+
 
                         '</td>'+
@@ -192,18 +237,15 @@
             var kode=$(this).attr('data');
             $.ajax({
                 type : "GET",
-                url  : "<?php echo base_url('pengguna/dt_pengguna/get_pengguna')?>",
+                url  : "<?php echo base_url('pengguna/c_pengguna/get_pengguna')?>",
                 dataType : "JSON",
-                data : {kode:kode},
+                data : {id_pertanyaan:id_pertanyaan},
                 success: function(data){
-                  $.each(data,function(kode,nama,skpd,no_telp,email,pertanyaan){
+                  $.each(data,function(id_pertanyaan,pertanyaan,tgl){
                   $('#ModalaEdit').modal('show');
-                  $('[name="kode_edit"]').val(data.kode);
-                  $('[name="nama_edit"]').val(data.nama);
-                  $('[name="skpd_edit"]').val(data.skpd);
-                  $('[name="no_telp_edit"]').val(data.no_telp);
-                  $('[name="email_edit"]').val(data.email);
+                  $('[name="id_pertanyaan_edit"]').val(data.id_pertanyaan);
                   $('[name="pertanyaan_edit"]').val(data.pertanyaan);
+                  $('[name="tgl_edit"]').val(data.tgl);
                 });
                 }
             });
